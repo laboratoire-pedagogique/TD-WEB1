@@ -1,58 +1,40 @@
-const user = document.getElementById("user");
-const loader = document.getElementById("loader");
-const greeting = document.getElementById("greeting");
-const box = document.getElementById("box");
+const titre = document.getElementById("titre");
+const description = document.getElementById("description");
+const add = document.getElementById("add");
+const tableBody = document.getElementById("table-body");
 
 
-
-
-function load(){
-    hide(loader);
+function addElementToTable(title, description,element) {
+    element.innerHTML += `
+        <tr>
+            <td>${title}</td>
+            <td>${description}</td>
+            <td>todo</td>
+            <td><button>Remove</button></td>
+        </tr>
+    `;
 }
 
-function hide(element) {
-    element.classList.remove("block");
-    element.classList.add("none");
+function addElementsToTable(title, description,element) {
+    var tr = document.createElement("tr");
+    var titre = document.createElement("td").innerText = title.value;
+    var descr = document.createElement("td").textContent = description.value;
+    var btn = document.createElement("button").innerText = "Remove";
+    tr.append(titre, descr, btn);
+    element.append(tr);
+    //title.value = "";
+    //description.value = "";
 }
 
-function display(element) {
-    element.classList.remove("none");
-    element.classList.add("block");
+function checkValue(element) {
+    return element.value == "" || element.value == null;
 }
 
-function toggle(element) {
-    display(element);
-    setTimeout(() => {
-        hide(element);
-    },5000)
-}
-
-function defineText(element, value) {
-    element.innerText = value;
-}
-
-//function hello() {
-//    alert("Hello World");
-//}
-
-//setTimeout(hello, 5000);
-
-function greet(element, value) {
-    setTimeout(() => {
-        defineText(element, value);
-        display(element);
-    },5000)
-}
-
-window.addEventListener("keydown",(e) => {
-    if (e.key == "Enter") {
-        const username = user.value;
-        const text = "Hello " + username;
-        //4) hide(user);
-        //1) user.style.display = "none";
-        //2) user.remove();
-        //3) box.removeChild(user);
-        toggle(loader)
-        greet(greeting, text);
+add.addEventListener("click", (e) => {
+    e.preventDefault();
+    if(!checkValue(titre) && !checkValue(description)) {
+        //addElementToTable(titre.value, description.value, tableBody);
+        addElementsToTable(titre, description, tableBody);
     }
+    else alert("Missing values !");
 })

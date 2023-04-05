@@ -4,15 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>TD5</title>
     <link rel="stylesheet" href="index.css">
     <script src="index.js" defer></script>
 </head>
 <body>
-    <div class="content" id="box">
-        <input type="text" id="user">
-        <p id="loader" class="none">Loading</p>
-        <span id="greeting" class="none"></span>
-    </div>
+    <form>
+        <div><input type="text" placeholder="Titre" id="titre"></div>
+        <div><input type="text" placeholder="Description" id="description"></div>
+        <div><button id="add">Ajouter</button></div>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>Titre</th>
+            </tr>
+            <tr>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody id="table-body">
+            <tr>
+                <td>Lorem</td>
+                <td>ispum dolor</td>
+                <td>todo</td>
+            </tr>
+        </tbody>
+    </table>
 </body>
 </html>
